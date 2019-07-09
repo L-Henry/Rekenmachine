@@ -12,10 +12,7 @@ namespace CalculatorApp.Domain
 {
     public partial class RekenmachineForm : Form
     {
-        public double Getal1 { get; set; }
-        public double Getal2 { get; set; }
-        public double VoorlopigResultaat { get; set; }
-        public string Bewerking { get; set; }
+        
 
 
         public RekenmachineForm()
@@ -86,22 +83,7 @@ namespace CalculatorApp.Domain
 
         private void ButtonPlus_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text == null)
-            {
-
-            }
-            if (textBox2.Text == null || textBox2.Text == "")
-            {
-                textBox2.Text += textBox1.Text;
-                VoorlopigResultaat = 0;
-
-            }
-            else
-            {
-                textBox2.Text += " + " + textBox1.Text;
-                VoorlopigResultaat = double.Parse(textBox1.Text);
-            }
-            textBox1.Text = VoorlopigResultaat.ToString();
+            
         }
 
         private void ButtonMin_Click(object sender, EventArgs e)
@@ -132,13 +114,12 @@ namespace CalculatorApp.Domain
 
         private void ButtonCE_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
-            textBox2.Text = "";
+            
         }
 
         private void ButtonC_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
+            
         }
 
         private void ButtonKwadraat_Click(object sender, EventArgs e)
