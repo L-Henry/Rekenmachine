@@ -8,6 +8,28 @@ namespace RekenmachineClassLibrary
 {
     public static class BerekenClass
     {
+
+        public static double Bereken(double get1, double get2, string bewerking)
+        {
+            switch (bewerking)
+            {
+                case "+":
+                    return get1 + get2;
+                case "-":
+                    return get1 - get2;
+                case "*":
+                    return get1 * get2;
+                case "/":
+                    return get1 / get2;
+                default:
+                    return 0;
+            }
+        }
+
+
+
+
+        /*
         public static string Binair(string input, int richting)
         {
             int lengte = input.Length;
@@ -80,9 +102,9 @@ namespace RekenmachineClassLibrary
                 }
             }
 
-
+            
             //kwadraat en sqrt
-            for (int tel = 1; tel < lengte; tel++)
+            for (int tel = 1; tel < lengte - 1; tel++)
             {
                 if (alles[tel] == '^')
                 {
@@ -120,7 +142,7 @@ namespace RekenmachineClassLibrary
 
 
             //vermeigvuldig en deling
-            for (int tel = 1; tel < lengte; tel++)
+            for (int tel = 1; tel < lengte-1; tel++)
             {
                 if (alles[tel] == '*' || alles[tel] == '/')
                 {
@@ -156,7 +178,7 @@ namespace RekenmachineClassLibrary
                 }
             }
             //som en verschil
-            for (int tel = 1; tel < lengte; tel++)
+            for (int tel = 1; tel < lengte-1; tel++)
             {
                 if ((alles[tel] == '-' && Char.IsNumber(alles[tel - 1])) || alles[tel] == '+')
                 {
@@ -188,7 +210,7 @@ namespace RekenmachineClassLibrary
                 }
             }
             //vergelijk
-            for (int tel = 1; tel < lengte; tel++)
+            for (int tel = 1; tel < lengte-1; tel++)
             {
                 if (alles[tel] == '=' && Char.IsNumber(alles[tel - 1]))
                 {
@@ -241,5 +263,6 @@ namespace RekenmachineClassLibrary
         }
 
 
+    }*/
     }
 }

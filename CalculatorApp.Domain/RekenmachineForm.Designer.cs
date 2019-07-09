@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonModulo = new System.Windows.Forms.Button();
+            this.buttonPercent = new System.Windows.Forms.Button();
             this.buttonSqrt = new System.Windows.Forms.Button();
             this.buttonKwadraat = new System.Windows.Forms.Button();
             this.buttonCE = new System.Windows.Forms.Button();
             this.buttonC = new System.Windows.Forms.Button();
-            this.buttonOpenHaakje = new System.Windows.Forms.Button();
+            this.buttonDel = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -54,18 +54,18 @@
             this.button9 = new System.Windows.Forms.Button();
             this.buttonInvert = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonSluitHaakje = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // buttonModulo
+            // buttonPercent
             // 
-            this.buttonModulo.Location = new System.Drawing.Point(20, 115);
-            this.buttonModulo.Name = "buttonModulo";
-            this.buttonModulo.Size = new System.Drawing.Size(67, 66);
-            this.buttonModulo.TabIndex = 0;
-            this.buttonModulo.Text = "%";
-            this.buttonModulo.UseVisualStyleBackColor = true;
+            this.buttonPercent.Location = new System.Drawing.Point(20, 115);
+            this.buttonPercent.Name = "buttonPercent";
+            this.buttonPercent.Size = new System.Drawing.Size(67, 66);
+            this.buttonPercent.TabIndex = 0;
+            this.buttonPercent.Text = "%";
+            this.buttonPercent.UseVisualStyleBackColor = true;
             // 
             // buttonSqrt
             // 
@@ -91,7 +91,7 @@
             // 
             this.buttonCE.Location = new System.Drawing.Point(20, 200);
             this.buttonCE.Name = "buttonCE";
-            this.buttonCE.Size = new System.Drawing.Size(55, 66);
+            this.buttonCE.Size = new System.Drawing.Size(66, 66);
             this.buttonCE.TabIndex = 3;
             this.buttonCE.Text = "CE";
             this.buttonCE.UseVisualStyleBackColor = true;
@@ -99,23 +99,23 @@
             // 
             // buttonC
             // 
-            this.buttonC.Location = new System.Drawing.Point(96, 200);
+            this.buttonC.Location = new System.Drawing.Point(106, 200);
             this.buttonC.Name = "buttonC";
-            this.buttonC.Size = new System.Drawing.Size(47, 65);
+            this.buttonC.Size = new System.Drawing.Size(66, 65);
             this.buttonC.TabIndex = 4;
             this.buttonC.Text = "C";
             this.buttonC.UseVisualStyleBackColor = true;
             this.buttonC.Click += new System.EventHandler(this.ButtonC_Click);
             // 
-            // buttonOpenHaakje
+            // buttonDel
             // 
-            this.buttonOpenHaakje.Location = new System.Drawing.Point(168, 201);
-            this.buttonOpenHaakje.Name = "buttonOpenHaakje";
-            this.buttonOpenHaakje.Size = new System.Drawing.Size(51, 63);
-            this.buttonOpenHaakje.TabIndex = 5;
-            this.buttonOpenHaakje.Text = "(";
-            this.buttonOpenHaakje.UseVisualStyleBackColor = true;
-            this.buttonOpenHaakje.Click += new System.EventHandler(this.ButtonOpenHaakje_Click);
+            this.buttonDel.Location = new System.Drawing.Point(194, 200);
+            this.buttonDel.Name = "buttonDel";
+            this.buttonDel.Size = new System.Drawing.Size(70, 63);
+            this.buttonDel.TabIndex = 5;
+            this.buttonDel.Text = "<-";
+            this.buttonDel.UseVisualStyleBackColor = true;
+            this.buttonDel.Click += new System.EventHandler(this.ButtonDel_Click);
             // 
             // button6
             // 
@@ -151,7 +151,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(20, 19);
+            this.textBox1.Location = new System.Drawing.Point(20, 55);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(374, 41);
             this.textBox1.TabIndex = 9;
@@ -218,9 +218,9 @@
             // 
             // buttonMin
             // 
-            this.buttonMin.Location = new System.Drawing.Point(315, 376);
+            this.buttonMin.Location = new System.Drawing.Point(314, 376);
             this.buttonMin.Name = "buttonMin";
-            this.buttonMin.Size = new System.Drawing.Size(74, 58);
+            this.buttonMin.Size = new System.Drawing.Size(75, 58);
             this.buttonMin.TabIndex = 16;
             this.buttonMin.Text = "-";
             this.buttonMin.UseVisualStyleBackColor = true;
@@ -228,9 +228,9 @@
             // 
             // buttonPlus
             // 
-            this.buttonPlus.Location = new System.Drawing.Point(320, 458);
+            this.buttonPlus.Location = new System.Drawing.Point(314, 458);
             this.buttonPlus.Name = "buttonPlus";
-            this.buttonPlus.Size = new System.Drawing.Size(69, 56);
+            this.buttonPlus.Size = new System.Drawing.Size(75, 56);
             this.buttonPlus.TabIndex = 17;
             this.buttonPlus.Text = "+";
             this.buttonPlus.UseVisualStyleBackColor = true;
@@ -259,9 +259,9 @@
             // 
             // buttonIs
             // 
-            this.buttonIs.Location = new System.Drawing.Point(317, 534);
+            this.buttonIs.Location = new System.Drawing.Point(314, 534);
             this.buttonIs.Name = "buttonIs";
-            this.buttonIs.Size = new System.Drawing.Size(72, 66);
+            this.buttonIs.Size = new System.Drawing.Size(75, 66);
             this.buttonIs.TabIndex = 20;
             this.buttonIs.Text = "=";
             this.buttonIs.UseVisualStyleBackColor = true;
@@ -309,7 +309,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.buttonSluitHaakje);
+            this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.buttonInvert);
             this.panel1.Controls.Add(this.button9);
             this.panel1.Controls.Add(this.button8);
@@ -329,26 +329,23 @@
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.buttonOpenHaakje);
+            this.panel1.Controls.Add(this.buttonDel);
             this.panel1.Controls.Add(this.buttonC);
             this.panel1.Controls.Add(this.buttonCE);
             this.panel1.Controls.Add(this.buttonKwadraat);
             this.panel1.Controls.Add(this.buttonSqrt);
-            this.panel1.Controls.Add(this.buttonModulo);
+            this.panel1.Controls.Add(this.buttonPercent);
             this.panel1.Location = new System.Drawing.Point(12, 80);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(418, 670);
             this.panel1.TabIndex = 25;
             // 
-            // buttonSluitHaakje
+            // textBox2
             // 
-            this.buttonSluitHaakje.Location = new System.Drawing.Point(238, 201);
-            this.buttonSluitHaakje.Name = "buttonSluitHaakje";
-            this.buttonSluitHaakje.Size = new System.Drawing.Size(53, 65);
-            this.buttonSluitHaakje.TabIndex = 25;
-            this.buttonSluitHaakje.Text = ")";
-            this.buttonSluitHaakje.UseVisualStyleBackColor = true;
-            this.buttonSluitHaakje.Click += new System.EventHandler(this.ButtonSluitHaakje_Click);
+            this.textBox2.Location = new System.Drawing.Point(22, 14);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(371, 26);
+            this.textBox2.TabIndex = 25;
             // 
             // RekenmachineForm
             // 
@@ -366,12 +363,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Button buttonModulo;
+        private System.Windows.Forms.Button buttonPercent;
         private System.Windows.Forms.Button buttonSqrt;
         private System.Windows.Forms.Button buttonKwadraat;
         private System.Windows.Forms.Button buttonCE;
         private System.Windows.Forms.Button buttonC;
-        private System.Windows.Forms.Button buttonOpenHaakje;
+        private System.Windows.Forms.Button buttonDel;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
@@ -392,7 +389,7 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button buttonInvert;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button buttonSluitHaakje;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 
