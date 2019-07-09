@@ -79,6 +79,46 @@ namespace RekenmachineClassLibrary
                     return Bereken(alles.Substring(0, haakjeOpen) + binnenHaakjesBerekend + rest.Substring(haakjeToe + 1, rest.Length - haakjeToe - 1));
                 }
             }
+
+
+            //kwadraat en sqrt
+            for (int tel = 1; tel < lengte; tel++)
+            {
+                if (alles[tel] == '^')
+                {
+                    int Index = tel;
+                    int i = 0;
+                    int j = 1;
+
+                    while (Index - i > 0 && (Char.IsNumber(alles[Index - 1 - i]) || alles[Index - 1 - i] == ',' || (alles[Index - 1 - i] == '-' && tel - i - 1 > 0 && Char.IsSymbol(alles[Index - i - 2]))))//&& ( minIndex > 1 && Char.IsSymbol(alles[Index - i - 1]) ) ) ) )
+                    {
+                        i++;
+                    }
+                    while (Index + j < lengte - 1 && (Char.IsNumber(alles[Index + j + 1]) || alles[Index + j + 1] == ',' || (Char.IsSymbol(alles[Index]) && Char.IsSymbol(alles[Index + 1]))))
+                    {
+                        j++;
+                    }
+
+                    double min1 = double.Parse(alles.Substring(Index - i, i));
+                    double min2 = double.Parse(alles.Substring(Index + 1, j));
+                    double min;
+                    if (min1 < 0)
+                    {
+                        throw new Exception("Vierkantswortel van negatief getal kan niet.");
+                    }
+                    else if (min2 >= 1)
+                    {
+                        min = Math.Pow(min1, min2);
+                    }
+                    else
+                    {
+                        min = Math.Pow(min1, min2);
+                    }
+                    return Bereken(alles.Substring(0, Index - i) + min + alles.Substring(Index + j + 1, lengte - 1 - Index - j));
+                }
+            }
+
+
             //vermeigvuldig en deling
             for (int tel = 1; tel < lengte; tel++)
             {
@@ -103,6 +143,10 @@ namespace RekenmachineClassLibrary
                     if (alles[tel] == '*')
                     {
                         min = min1 * min2;
+                    }
+                    else if (min2 == 0)
+                    {
+                        throw new Exception("Delen door 0 kan niet.");
                     }
                     else
                     {

@@ -69,33 +69,86 @@ namespace CalculatorApp.Domain
 
         private void ButtonIs_Click(object sender, EventArgs e)
         {
-            RekenmachineClassLibrary.BerekenClass.Bereken(textBox1.Text);
+            textBox1.Text = RekenmachineClassLibrary.BerekenClass.Bereken(textBox1.Text).ToString();
         }
 
         private void ButtonComma_Click(object sender, EventArgs e)
         {
-
+            textBox1.Text += ",";
         }
 
         private void ButtonPlus_Click(object sender, EventArgs e)
         {
-
+            textBox1.Text += "+";
         }
 
         private void ButtonMin_Click(object sender, EventArgs e)
         {
-
+            textBox1.Text += "-";
         }
 
         private void ButtonMaal_Click(object sender, EventArgs e)
         {
-
+            textBox1.Text += "*";
         }
 
         private void ButtonDeel_Click(object sender, EventArgs e)
         {
             textBox1.Text += "/";
+        }
 
+        private void ButtonOpenHaakje_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += "(";
+        }
+
+        private void ButtonSluitHaakje_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += ")";
+        }
+
+        private void ButtonVeranderTeken_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text[0] != '-')
+            {
+                textBox1.Text = "-" + textBox1.Text;
+            }
+            else
+            {
+                textBox1.Text = textBox1.Text.Substring(1, textBox1.Text.Length - 1);
+            }      
+        }
+
+        private void ButtonInvert_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(textBox1.Text, out int result))
+            {
+                textBox1.Text = "1/" + textBox1.Text;
+            }
+            else
+            {
+                textBox1.Text = "1/(" + textBox1.Text + ")";
+            }
+        }
+
+        private void ButtonCE_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+        }
+
+        private void ButtonC_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text.Substring(0, textBox1.Text.Length - 1);
+        }
+
+        private void ButtonKwadraat_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += "^2";
+        }
+
+        private void ButtonSqrt_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += "^(1/2)";
         }
     }
 }
