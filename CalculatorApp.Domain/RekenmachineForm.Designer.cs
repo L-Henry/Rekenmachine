@@ -55,6 +55,7 @@
             this.buttonInvert = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,6 +67,7 @@
             this.buttonPercent.TabIndex = 0;
             this.buttonPercent.Text = "%";
             this.buttonPercent.UseVisualStyleBackColor = true;
+            this.buttonPercent.Click += new System.EventHandler(this.ButtonPercent_Click);
             // 
             // buttonSqrt
             // 
@@ -347,11 +349,21 @@
             this.textBox2.Size = new System.Drawing.Size(371, 26);
             this.textBox2.TabIndex = 25;
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 20;
+            this.listBox1.Location = new System.Drawing.Point(464, 83);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(392, 664);
+            this.listBox1.TabIndex = 26;
+            // 
             // RekenmachineForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(813, 975);
+            this.ClientSize = new System.Drawing.Size(887, 975);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.panel1);
             this.Name = "RekenmachineForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -391,6 +403,7 @@
         private System.Windows.Forms.Button buttonInvert;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 
