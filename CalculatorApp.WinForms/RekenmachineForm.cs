@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CalculatorApp;
 
 namespace CalculatorApp.WinForms
 {
@@ -97,24 +98,19 @@ namespace CalculatorApp.WinForms
             {
                 textBox1.Text = "";
             }
-            textBox1.Text += button.Text;
             GetalIngevuld = true;
+            textBox1.Text += button.Text;
             InvertAfgehandeld = true;
         }
 
         private void ButtonIs_Click(object sender, EventArgs e)
         {
-            if (Bewerking == "k")
-            {
-                listBox1.Items.Add(textBox2.Text + " = " + textBox1.Text);
-                Bewerking = null;
-            }
-            else if (Bewerking == null)
+            if (Bewerking == null)
             {
                 Getal1 = textBox1.Text;
                 listBox1.Items.Add(Getal1 + " = " + Getal1);
             }
-            else if (/*!InvertAfgehandeld &&*/ GetalIngevuld && textBox1.Text != "-")
+            else if (GetalIngevuld && textBox1.Text != "-")
             {
                 Getal2 = textBox1.Text;
                 GetalIngevuld = false;
@@ -122,7 +118,6 @@ namespace CalculatorApp.WinForms
                 textBox2.Text += " " + Getal2 + " = " + textBox1.Text;
                 listBox1.Items.Add(textBox2.Text);
                 textBox2.Text = "";
-                //InvertAfgehandeld = true;
             }
             else if (textBox1.Text.Any(c => char.IsDigit(c)) && textBox1.Text != "-")
             {
