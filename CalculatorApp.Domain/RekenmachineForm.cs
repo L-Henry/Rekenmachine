@@ -17,6 +17,7 @@ namespace CalculatorApp.WinForms
         public string Bewerking { get; set; }
         public string Getal1 { get; set; }
         public string Getal2 { get; set; }
+        public bool InvertAfgehandeld { get; set; } = true;
 
         public RekenmachineForm()
         {
@@ -87,7 +88,7 @@ namespace CalculatorApp.WinForms
         {
             Button button = sender as Button;
 
-            if (!GetalIngevuld && (Bewerking == "invert"))
+            if (GetalIngevuld && !InvertAfgehandeld)
             {
                 textBox1.Text = "";
                 textBox2.Text = "";
@@ -98,11 +99,12 @@ namespace CalculatorApp.WinForms
             }
             textBox1.Text += button.Text;
             GetalIngevuld = true;
+            InvertAfgehandeld = true;
         }
 
         private void ButtonIs_Click(object sender, EventArgs e)
         {
-            if (Bewerking == "invert")
+            if (Bewerking == "k")
             {
                 listBox1.Items.Add(textBox2.Text + " = " + textBox1.Text);
                 Bewerking = null;
@@ -112,7 +114,7 @@ namespace CalculatorApp.WinForms
                 Getal1 = textBox1.Text;
                 listBox1.Items.Add(Getal1 + " = " + Getal1);
             }
-            else if (GetalIngevuld && textBox1.Text != "-")
+            else if (/*!InvertAfgehandeld &&*/ GetalIngevuld && textBox1.Text != "-")
             {
                 Getal2 = textBox1.Text;
                 GetalIngevuld = false;
@@ -120,6 +122,7 @@ namespace CalculatorApp.WinForms
                 textBox2.Text += " " + Getal2 + " = " + textBox1.Text;
                 listBox1.Items.Add(textBox2.Text);
                 textBox2.Text = "";
+                //InvertAfgehandeld = true;
             }
             else if (textBox1.Text.Any(c => char.IsDigit(c)) && textBox1.Text != "-")
             {
@@ -231,21 +234,8 @@ namespace CalculatorApp.WinForms
 
         private void ButtonInvert_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text.Length < 1)
-            {
-                Getal1 = textBox1.Text;
-                textBox1.Text = (1 / double.Parse(textBox1.Text)).ToString();
-                textBox2.Text += "1/(" + Getal1 + ")";
-                //GetalIngevuld = false;
-            }
-            else
-            {
-                Getal1 = textBox1.Text;
-                textBox1.Text = (1 / double.Parse(textBox1.Text)).ToString();
-                textBox2.Text += "1/(" + Getal1 + ")";
-                //GetalIngevuld = true;
-            }
-            Bewerking = "invert";
+            textBox1.Text = (1 / double.Parse(textBox1.Text)).ToString();
+            InvertAfgehandeld = false;
         }
 
         private void ButtonCE_Click(object sender, EventArgs e)
