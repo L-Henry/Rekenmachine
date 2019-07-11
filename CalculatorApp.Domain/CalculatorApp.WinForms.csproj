@@ -80,9 +80,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RekenmachineClassLibrary\RekenmachineClassLibrary.csproj">
+    <ProjectReference Include="..\RekenmachineClassLibrary\CalculatorApp.Library.csproj">
       <Project>{0e5ea789-8414-468e-8a50-871992d1f52a}</Project>
-      <Name>RekenmachineClassLibrary</Name>
+      <Name>CalculatorApp.Library</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

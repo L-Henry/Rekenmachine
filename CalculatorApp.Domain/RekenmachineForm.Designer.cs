@@ -1,4 +1,4 @@
-﻿namespace CalculatorApp.Domain
+﻿namespace CalculatorApp.WinForms
 {
     partial class RekenmachineForm
     {
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RekenmachineForm));
             this.buttonPercent = new System.Windows.Forms.Button();
             this.buttonSqrt = new System.Windows.Forms.Button();
             this.buttonKwadraat = new System.Windows.Forms.Button();
@@ -58,8 +57,10 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.comboBox = new System.Windows.Forms.ToolStripComboBox();
             this.panelParser = new System.Windows.Forms.Panel();
+            this.buttonSluitHaakje = new System.Windows.Forms.Button();
+            this.buttonOpenHaakje = new System.Windows.Forms.Button();
             this.textBoxP2 = new System.Windows.Forms.TextBox();
             this.buttonPInvert = new System.Windows.Forms.Button();
             this.buttonP9 = new System.Windows.Forms.Button();
@@ -85,9 +86,7 @@
             this.buttonPSqr = new System.Windows.Forms.Button();
             this.buttonPSqrt = new System.Windows.Forms.Button();
             this.buttonPModulo = new System.Windows.Forms.Button();
-            this.buttonOpenHaakje = new System.Windows.Forms.Button();
-            this.buttonSluitHaakje = new System.Windows.Forms.Button();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.buttonClearHistory = new System.Windows.Forms.Button();
             this.panelKlassiek.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panelParser.SuspendLayout();
@@ -161,7 +160,6 @@
             this.button6.TabIndex = 6;
             this.button6.Text = "6";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
             // button5
             // 
@@ -171,7 +169,6 @@
             this.button5.TabIndex = 7;
             this.button5.Text = "5";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
             // button4
             // 
@@ -182,13 +179,13 @@
             this.button4.TabIndex = 8;
             this.button4.Text = "4";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(20, 55);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(374, 41);
             this.textBox1.TabIndex = 9;
             // 
@@ -200,7 +197,6 @@
             this.button1.TabIndex = 10;
             this.button1.Text = "1";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click_1);
             // 
             // button2
             // 
@@ -210,7 +206,6 @@
             this.button2.TabIndex = 11;
             this.button2.Text = "2";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button3
             // 
@@ -220,7 +215,6 @@
             this.button3.TabIndex = 12;
             this.button3.Text = "3";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // buttonVeranderTeken
             // 
@@ -280,7 +274,6 @@
             this.button0.TabIndex = 18;
             this.button0.Text = "0";
             this.button0.UseVisualStyleBackColor = true;
-            this.button0.Click += new System.EventHandler(this.Button0_Click);
             // 
             // buttonComma
             // 
@@ -311,7 +304,6 @@
             this.button7.TabIndex = 21;
             this.button7.Text = "7";
             this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.Button7_Click);
             // 
             // button8
             // 
@@ -321,7 +313,6 @@
             this.button8.TabIndex = 22;
             this.button8.Text = "8";
             this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.Button8_Click);
             // 
             // button9
             // 
@@ -331,7 +322,6 @@
             this.button9.TabIndex = 23;
             this.button9.Text = "9";
             this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.Button9_Click);
             // 
             // buttonInvert
             // 
@@ -380,6 +370,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(22, 14);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(371, 26);
             this.textBox2.TabIndex = 25;
             // 
@@ -396,23 +387,21 @@
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripLabel1});
+            this.comboBox});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1635, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1539, 33);
             this.toolStrip1.TabIndex = 27;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // comboBox
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(28, 28);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButton1_Click);
+            this.comboBox.Items.AddRange(new object[] {
+            "Klassiek",
+            "Parser"});
+            this.comboBox.Name = "comboBox";
+            this.comboBox.Size = new System.Drawing.Size(121, 33);
+            this.comboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             // 
             // panelParser
             // 
@@ -448,6 +437,26 @@
             this.panelParser.Size = new System.Drawing.Size(499, 557);
             this.panelParser.TabIndex = 28;
             // 
+            // buttonSluitHaakje
+            // 
+            this.buttonSluitHaakje.Location = new System.Drawing.Point(407, 115);
+            this.buttonSluitHaakje.Name = "buttonSluitHaakje";
+            this.buttonSluitHaakje.Size = new System.Drawing.Size(68, 63);
+            this.buttonSluitHaakje.TabIndex = 27;
+            this.buttonSluitHaakje.Text = ")";
+            this.buttonSluitHaakje.UseVisualStyleBackColor = true;
+            this.buttonSluitHaakje.Click += new System.EventHandler(this.ButtonSluitHaakje_Click);
+            // 
+            // buttonOpenHaakje
+            // 
+            this.buttonOpenHaakje.Location = new System.Drawing.Point(316, 115);
+            this.buttonOpenHaakje.Name = "buttonOpenHaakje";
+            this.buttonOpenHaakje.Size = new System.Drawing.Size(72, 64);
+            this.buttonOpenHaakje.TabIndex = 26;
+            this.buttonOpenHaakje.Text = "(";
+            this.buttonOpenHaakje.UseVisualStyleBackColor = true;
+            this.buttonOpenHaakje.Click += new System.EventHandler(this.ButtonOpenHaakje_Click);
+            // 
             // textBoxP2
             // 
             this.textBoxP2.Location = new System.Drawing.Point(24, 11);
@@ -473,7 +482,6 @@
             this.buttonP9.TabIndex = 23;
             this.buttonP9.Text = "9";
             this.buttonP9.UseVisualStyleBackColor = true;
-            this.buttonP9.Click += new System.EventHandler(this.ButtonP9_Click);
             // 
             // buttonP8
             // 
@@ -483,7 +491,6 @@
             this.buttonP8.TabIndex = 22;
             this.buttonP8.Text = "8";
             this.buttonP8.UseVisualStyleBackColor = true;
-            this.buttonP8.Click += new System.EventHandler(this.ButtonP8_Click);
             // 
             // buttonP7
             // 
@@ -493,7 +500,6 @@
             this.buttonP7.TabIndex = 21;
             this.buttonP7.Text = "7";
             this.buttonP7.UseVisualStyleBackColor = true;
-            this.buttonP7.Click += new System.EventHandler(this.ButtonP7_Click);
             // 
             // buttonPIs
             // 
@@ -524,7 +530,6 @@
             this.buttonP0.TabIndex = 18;
             this.buttonP0.Text = "0";
             this.buttonP0.UseVisualStyleBackColor = true;
-            this.buttonP0.Click += new System.EventHandler(this.ButtonP0_Click);
             // 
             // buttonPPlus
             // 
@@ -584,7 +589,6 @@
             this.buttonP3.TabIndex = 12;
             this.buttonP3.Text = "3";
             this.buttonP3.UseVisualStyleBackColor = true;
-            this.buttonP3.Click += new System.EventHandler(this.ButtonP3_Click);
             // 
             // buttonP2
             // 
@@ -594,7 +598,6 @@
             this.buttonP2.TabIndex = 11;
             this.buttonP2.Text = "2";
             this.buttonP2.UseVisualStyleBackColor = true;
-            this.buttonP2.Click += new System.EventHandler(this.ButtonP2_Click);
             // 
             // buttonP1
             // 
@@ -604,7 +607,6 @@
             this.buttonP1.TabIndex = 10;
             this.buttonP1.Text = "1";
             this.buttonP1.UseVisualStyleBackColor = true;
-            this.buttonP1.Click += new System.EventHandler(this.ButtonP1_Click);
             // 
             // textBoxP1
             // 
@@ -623,7 +625,6 @@
             this.buttonP4.TabIndex = 8;
             this.buttonP4.Text = "4";
             this.buttonP4.UseVisualStyleBackColor = true;
-            this.buttonP4.Click += new System.EventHandler(this.ButtonP4_Click);
             // 
             // buttonP5
             // 
@@ -633,7 +634,6 @@
             this.buttonP5.TabIndex = 7;
             this.buttonP5.Text = "5";
             this.buttonP5.UseVisualStyleBackColor = true;
-            this.buttonP5.Click += new System.EventHandler(this.ButtonP5_Click);
             // 
             // buttonP6
             // 
@@ -643,7 +643,6 @@
             this.buttonP6.TabIndex = 6;
             this.buttonP6.Text = "6";
             this.buttonP6.UseVisualStyleBackColor = true;
-            this.buttonP6.Click += new System.EventHandler(this.ButtonP6_Click);
             // 
             // buttonPDel
             // 
@@ -694,37 +693,22 @@
             this.buttonPModulo.Text = "%";
             this.buttonPModulo.UseVisualStyleBackColor = true;
             // 
-            // buttonOpenHaakje
+            // buttonClearHistory
             // 
-            this.buttonOpenHaakje.Location = new System.Drawing.Point(316, 115);
-            this.buttonOpenHaakje.Name = "buttonOpenHaakje";
-            this.buttonOpenHaakje.Size = new System.Drawing.Size(72, 64);
-            this.buttonOpenHaakje.TabIndex = 26;
-            this.buttonOpenHaakje.Text = "(";
-            this.buttonOpenHaakje.UseVisualStyleBackColor = true;
-            this.buttonOpenHaakje.Click += new System.EventHandler(this.ButtonOpenHaakje_Click);
-            // 
-            // buttonSluitHaakje
-            // 
-            this.buttonSluitHaakje.Location = new System.Drawing.Point(407, 115);
-            this.buttonSluitHaakje.Name = "buttonSluitHaakje";
-            this.buttonSluitHaakje.Size = new System.Drawing.Size(68, 63);
-            this.buttonSluitHaakje.TabIndex = 27;
-            this.buttonSluitHaakje.Text = ")";
-            this.buttonSluitHaakje.UseVisualStyleBackColor = true;
-            this.buttonSluitHaakje.Click += new System.EventHandler(this.ButtonSluitHaakje_Click);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(131, 28);
-            this.toolStripLabel1.Text = "toolStripLabel1";
+            this.buttonClearHistory.Location = new System.Drawing.Point(528, 29);
+            this.buttonClearHistory.Name = "buttonClearHistory";
+            this.buttonClearHistory.Size = new System.Drawing.Size(200, 37);
+            this.buttonClearHistory.TabIndex = 29;
+            this.buttonClearHistory.Text = "Clear history";
+            this.buttonClearHistory.UseVisualStyleBackColor = true;
+            this.buttonClearHistory.Click += new System.EventHandler(this.ButtonClearHistory_Click);
             // 
             // RekenmachineForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1635, 928);
+            this.ClientSize = new System.Drawing.Size(1539, 789);
+            this.Controls.Add(this.buttonClearHistory);
             this.Controls.Add(this.panelParser);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.listBox1);
@@ -775,7 +759,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.Panel panelParser;
         private System.Windows.Forms.TextBox textBoxP2;
         private System.Windows.Forms.Button buttonPInvert;
@@ -804,7 +787,8 @@
         private System.Windows.Forms.Button buttonPModulo;
         private System.Windows.Forms.Button buttonSluitHaakje;
         private System.Windows.Forms.Button buttonOpenHaakje;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.Button buttonClearHistory;
+        private System.Windows.Forms.ToolStripComboBox comboBox;
     }
 }
 

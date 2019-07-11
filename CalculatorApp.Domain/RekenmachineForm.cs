@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CalculatorApp.Domain
+namespace CalculatorApp.WinForms
 {
     public partial class RekenmachineForm : Form
     {
@@ -23,138 +23,91 @@ namespace CalculatorApp.Domain
             InitializeComponent();
         }
 
-        // Panel beheer
         private void RekenmachineForm_Load(object sender, EventArgs e)
         {
             panelParser.Visible = false;
-            toolStripLabel1.Text = "Klassiek";
             textBox1.Text = "0";
+            comboBox.SelectedIndex = 0;
+
+            this.Size = new Size(650, 550);
+            this.MinimumSize = Size;
+            this.MaximumSize = Size;
+
+            button0.Click += Button_Click;
+            button1.Click += Button_Click;
+            button2.Click += Button_Click;
+            button3.Click += Button_Click;
+            button4.Click += Button_Click;
+            button5.Click += Button_Click;
+            button6.Click += Button_Click;
+            button7.Click += Button_Click;
+            button8.Click += Button_Click;
+            button9.Click += Button_Click;
+            buttonP0.Click += ButtonP_Click;
+            buttonP1.Click += ButtonP_Click;
+            buttonP2.Click += ButtonP_Click;
+            buttonP3.Click += ButtonP_Click;
+            buttonP4.Click += ButtonP_Click;
+            buttonP5.Click += ButtonP_Click;
+            buttonP6.Click += ButtonP_Click;
+            buttonP7.Click += ButtonP_Click;
+            buttonP8.Click += ButtonP_Click;
+            buttonP9.Click += ButtonP_Click;
+
         }
 
-        private void ToolStripButton1_Click(object sender, EventArgs e)
+        // Panel beheer
+        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!panelParser.Visible)
+            if (comboBox.SelectedIndex == 0)
             {
-                panelKlassiek.Visible = false;
-                panelParser.Location = new Point(12, 60);
-                panelParser.Visible = true;
-                toolStripLabel1.Text = "Mijn parser rekenmachine.";
-                textBoxP1.Text = "0";
+                if (panelParser.Visible)
+                {
+                    panelParser.Visible = false;
+                    panelKlassiek.Visible = true;
+                    textBox1.Text = "0";
+                    GetalIngevuld = false;
+                }
             }
-            else
+            else if (comboBox.SelectedIndex == 1)
             {
-                panelParser.Visible = false;
-                panelKlassiek.Visible = true;
-                toolStripLabel1.Text = "Klassiek";
-                textBox1.Text = "0";
+                if (panelKlassiek.Visible)
+                {
+                    panelKlassiek.Visible = false;
+                    panelParser.Location = new Point(12, 60);
+                    panelParser.Visible = true;
+                    textBoxP1.Text = "0";
+                    GetalIngevuldParserPanel = false;
+                }
             }
         }
 
         //panelKlassiek
-        private void Button1_Click_1(object sender, EventArgs e)
+        private void Button_Click(object sender, EventArgs e)
         {
+            Button button = sender as Button;
 
-            if (!GetalIngevuld)
+            if (!GetalIngevuld && (Bewerking == "invert"))
+            {
+                textBox1.Text = "";
+                textBox2.Text = "";
+            }
+            else if (!GetalIngevuld)
             {
                 textBox1.Text = "";
             }
-            textBox1.Text += 1;
+            textBox1.Text += button.Text;
             GetalIngevuld = true;
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            if (!GetalIngevuld)
-            {
-                textBox1.Text = "";
-            }
-            GetalIngevuld = true;
-            textBox1.Text += 2;
-        }
-
-        private void Button3_Click(object sender, EventArgs e)
-        {
-            if (!GetalIngevuld)
-            {
-                textBox1.Text = "";
-            }
-            GetalIngevuld = true;
-            textBox1.Text += 3;
-        }
-
-        private void Button4_Click(object sender, EventArgs e)
-        {
-            if (!GetalIngevuld)
-            {
-                textBox1.Text = "";
-            }
-            GetalIngevuld = true;
-            textBox1.Text += 4;
-        }
-
-        private void Button5_Click(object sender, EventArgs e)
-        {
-            if (!GetalIngevuld)
-            {
-                textBox1.Text = "";
-            }
-            GetalIngevuld = true;
-            textBox1.Text += 5;
-        }
-
-        private void Button6_Click(object sender, EventArgs e)
-        {
-            if (!GetalIngevuld)
-            {
-                textBox1.Text = "";
-            }
-            GetalIngevuld = true;
-            textBox1.Text += 6;
-        }
-
-        private void Button7_Click(object sender, EventArgs e)
-        {
-            if (!GetalIngevuld)
-            {
-                textBox1.Text = "";
-            }
-            GetalIngevuld = true;
-            textBox1.Text += 7;
-        }
-
-        private void Button8_Click(object sender, EventArgs e)
-        {
-            if (!GetalIngevuld)
-            {
-                textBox1.Text = "";
-            }
-            GetalIngevuld = true;
-            textBox1.Text += 8;
-        }
-
-        private void Button9_Click(object sender, EventArgs e)
-        {
-            if (!GetalIngevuld)
-            {
-                textBox1.Text = "";
-            }
-            GetalIngevuld = true;
-            textBox1.Text += 9;
-        }
-
-        private void Button0_Click(object sender, EventArgs e)
-        {
-            if (!GetalIngevuld)
-            {
-                textBox1.Text = "";
-            }
-            GetalIngevuld = true;
-            textBox1.Text += 0;
         }
 
         private void ButtonIs_Click(object sender, EventArgs e)
         {
-            if (Bewerking == null)
+            if (Bewerking == "invert")
+            {
+                listBox1.Items.Add(textBox2.Text + " = " + textBox1.Text);
+                Bewerking = null;
+            }
+            else if (Bewerking == null)
             {
                 Getal1 = textBox1.Text;
                 listBox1.Items.Add(Getal1 + " = " + Getal1);
@@ -163,7 +116,7 @@ namespace CalculatorApp.Domain
             {
                 Getal2 = textBox1.Text;
                 GetalIngevuld = false;
-                textBox1.Text = RekenmachineClassLibrary.BerekenClass.Bereken(double.Parse(Getal1), double.Parse(Getal2), Bewerking).ToString();
+                textBox1.Text = CalculatorApp.Library.BerekenClass.Bereken(double.Parse(Getal1), double.Parse(Getal2), Bewerking).ToString();
                 textBox2.Text += " " + Getal2 + " = " + textBox1.Text;
                 listBox1.Items.Add(textBox2.Text);
                 textBox2.Text = "";
@@ -171,7 +124,7 @@ namespace CalculatorApp.Domain
             else if (textBox1.Text.Any(c => char.IsDigit(c)) && textBox1.Text != "-")
             {
                 Getal1 = textBox1.Text;
-                textBox1.Text = RekenmachineClassLibrary.BerekenClass.Bereken(double.Parse(Getal1), double.Parse(Getal2), Bewerking).ToString();
+                textBox1.Text = CalculatorApp.Library.BerekenClass.Bereken(double.Parse(Getal1), double.Parse(Getal2), Bewerking).ToString();
                 textBox2.Text += Getal1 + " " + Bewerking + " " + Getal2 + " = " + textBox1.Text;
                 listBox1.Items.Add(textBox2.Text);
                 textBox2.Text = "";
@@ -192,7 +145,7 @@ namespace CalculatorApp.Domain
             if (GetalIngevuld && textBox1.Text != "-" && ( textBox2.Text.Contains("+") || textBox2.Text.Contains("-") || textBox2.Text.Contains("*") || textBox2.Text.Contains("/")) )
             {
                 Getal2 = textBox1.Text;
-                textBox1.Text = RekenmachineClassLibrary.BerekenClass.Bereken(double.Parse(Getal1), double.Parse(Getal2), Bewerking).ToString();
+                textBox1.Text = CalculatorApp.Library.BerekenClass.Bereken(double.Parse(Getal1), double.Parse(Getal2), Bewerking).ToString();
                 Getal1 = textBox1.Text;
                 GetalIngevuld = false;
                 Bewerking = "+";
@@ -213,7 +166,7 @@ namespace CalculatorApp.Domain
             if (GetalIngevuld && textBox1.Text != "-" && (textBox2.Text.Contains("+") || textBox2.Text.Contains("-") || textBox2.Text.Contains("*") || textBox2.Text.Contains("/")))
             {
                 Getal2 = textBox1.Text;
-                textBox1.Text = RekenmachineClassLibrary.BerekenClass.Bereken(double.Parse(Getal1), double.Parse(Getal2), Bewerking).ToString();
+                textBox1.Text = CalculatorApp.Library.BerekenClass.Bereken(double.Parse(Getal1), double.Parse(Getal2), Bewerking).ToString();
                 Getal1 = textBox1.Text;
                 GetalIngevuld = false;
                 Bewerking = "-";
@@ -234,7 +187,7 @@ namespace CalculatorApp.Domain
             if (GetalIngevuld && textBox1.Text != "-" && (textBox2.Text.Contains("+") || textBox2.Text.Contains("-") || textBox2.Text.Contains("*") || textBox2.Text.Contains("/")))
             {
                 Getal2 = textBox1.Text;
-                textBox1.Text = RekenmachineClassLibrary.BerekenClass.Bereken(double.Parse(Getal1), double.Parse(Getal2), Bewerking).ToString();
+                textBox1.Text = CalculatorApp.Library.BerekenClass.Bereken(double.Parse(Getal1), double.Parse(Getal2), Bewerking).ToString();
                 Getal1 = textBox1.Text;
                 GetalIngevuld = false;
                 Bewerking = "*";
@@ -255,7 +208,7 @@ namespace CalculatorApp.Domain
             if (GetalIngevuld && textBox1.Text != "-" && (textBox2.Text.Contains("+") || textBox2.Text.Contains("-") || textBox2.Text.Contains("*") || textBox2.Text.Contains("/")))
             {
                 Getal2 = textBox1.Text;
-                textBox1.Text = RekenmachineClassLibrary.BerekenClass.Bereken(double.Parse(Getal1), double.Parse(Getal2), Bewerking).ToString();
+                textBox1.Text = CalculatorApp.Library.BerekenClass.Bereken(double.Parse(Getal1), double.Parse(Getal2), Bewerking).ToString();
                 Getal1 = textBox1.Text;
                 GetalIngevuld = false;
                 Bewerking = "/";
@@ -278,7 +231,21 @@ namespace CalculatorApp.Domain
 
         private void ButtonInvert_Click(object sender, EventArgs e)
         {
-            textBox1.Text  = (1 / double.Parse(textBox1.Text)).ToString();
+            if (textBox2.Text.Length < 1)
+            {
+                Getal1 = textBox1.Text;
+                textBox1.Text = (1 / double.Parse(textBox1.Text)).ToString();
+                textBox2.Text += "1/(" + Getal1 + ")";
+                //GetalIngevuld = false;
+            }
+            else
+            {
+                Getal1 = textBox1.Text;
+                textBox1.Text = (1 / double.Parse(textBox1.Text)).ToString();
+                textBox2.Text += "1/(" + Getal1 + ")";
+                //GetalIngevuld = true;
+            }
+            Bewerking = "invert";
         }
 
         private void ButtonCE_Click(object sender, EventArgs e)
@@ -330,105 +297,17 @@ namespace CalculatorApp.Domain
             textBox1.Text = (double.Parse(textBox1.Text) / 100).ToString();
         }
 
-        //panelParser
-        private void ButtonP0_Click(object sender, EventArgs e)
+        //Parser rekenmachine
+        private void ButtonP_Click(object sender, EventArgs e)
         {
-            if (!GetalIngevuldParserPanel)
-            {
-                textBoxP1.Text = "";
-            }
-            GetalIngevuldParserPanel = true;
-            textBoxP1.Text += 0;
-        }
+            Button button = sender as Button;
 
-        private void ButtonP1_Click(object sender, EventArgs e)
-        {
             if (!GetalIngevuldParserPanel)
             {
                 textBoxP1.Text = "";
             }
+            textBoxP1.Text += button.Text;
             GetalIngevuldParserPanel = true;
-            textBoxP1.Text += 1;
-        }
-
-        private void ButtonP2_Click(object sender, EventArgs e)
-        {
-            if (!GetalIngevuldParserPanel)
-            {
-                textBoxP1.Text = "";
-            }
-            GetalIngevuldParserPanel = true;
-            textBoxP1.Text += 2;
-        }
-
-        private void ButtonP3_Click(object sender, EventArgs e)
-        {
-            if (!GetalIngevuldParserPanel)
-            {
-                textBoxP1.Text = "";
-            }
-            GetalIngevuldParserPanel = true;
-            textBoxP1.Text += 3;
-        }
-
-        private void ButtonP4_Click(object sender, EventArgs e)
-        {
-            if (!GetalIngevuldParserPanel)
-            {
-                textBoxP1.Text = "";
-            }
-            GetalIngevuldParserPanel = true;
-            textBoxP1.Text += 4;
-        }
-
-        private void ButtonP5_Click(object sender, EventArgs e)
-        {
-            if (!GetalIngevuldParserPanel)
-            {
-                textBoxP1.Text = "";
-            }
-            GetalIngevuldParserPanel = true;
-            textBoxP1.Text += 5;
-        }
-
-        private void ButtonP6_Click(object sender, EventArgs e)
-        {
-            if (!GetalIngevuldParserPanel)
-            {
-                textBoxP1.Text = "";
-            }
-            GetalIngevuldParserPanel = true;
-            textBoxP1.Text += 6;
-        }
-
-        private void ButtonP7_Click(object sender, EventArgs e)
-        {
-            if (!GetalIngevuldParserPanel)
-            {
-                textBoxP1.Text = "";
-            }
-            GetalIngevuldParserPanel = true;
-            textBoxP1.Text += 7;
-        }
-
-        private void ButtonP8_Click(object sender, EventArgs e)
-        {
-            if (!GetalIngevuldParserPanel)
-            {
-                textBoxP1.Text = "";
-            }
-            GetalIngevuldParserPanel = true;
-            textBoxP1.Text += 8;
-        }
-
-        private void ButtonP9_Click(object sender, EventArgs e)
-        {
-            if (!GetalIngevuldParserPanel)
-            {
-                textBoxP1.Text = "";
-            }
-            GetalIngevuldParserPanel = true;
-            textBoxP1.Text += 9;
         }
 
         private void ButtonOpenHaakje_Click(object sender, EventArgs e)
@@ -501,7 +380,7 @@ namespace CalculatorApp.Domain
 
         private void ButtonPDel_Click(object sender, EventArgs e)
         {
-            textBoxP1.Text = textBox1.Text.Substring(0, textBox1.Text.Length - 1);
+            textBoxP1.Text = textBoxP1.Text.Substring(0, textBoxP1.Text.Length - 1);
             if (textBoxP1.Text == "" || textBoxP1.Text == "-")
             {
                 GetalIngevuldParserPanel = false;
@@ -539,8 +418,15 @@ namespace CalculatorApp.Domain
         private void ButtonPIs_Click(object sender, EventArgs e)
         {
             textBoxP2.Text = textBoxP1.Text;
-            textBoxP1.Text = RekenmachineClassLibrary.MijnParserRekenmachine.Bereken(textBoxP1.Text).ToString();
+            textBoxP1.Text = CalculatorApp.Library.MijnParserRekenmachine.Bereken(textBoxP1.Text).ToString();
             listBox1.Items.Add(textBoxP2.Text + " = " + textBoxP1.Text);
         }
+
+        private void ButtonClearHistory_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+        }
+
+
     }
 }

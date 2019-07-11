@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CalculatorApp.Domain")]
+[assembly: AssemblyTitle("CalculatorApp.WinForms")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Realdolmen")]
-[assembly: AssemblyProduct("CalculatorApp.Domain")]
+[assembly: AssemblyProduct("CalculatorApp.WinForms")]
 [assembly: AssemblyCopyright("Copyright © Realdolmen 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

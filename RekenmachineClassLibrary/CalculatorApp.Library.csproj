@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BerekenClass.cs" />
+    <Compile Include="BinairConverteren.cs" />
     <Compile Include="MijnParserRekenmachine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
